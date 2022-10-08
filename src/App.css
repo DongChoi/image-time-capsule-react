@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  width:100%;
+  height:100vh;
+  background-image: url("https://blog.nasm.org/hubfs/Imported_Blog_Media/Learning-to-accept-and-let-go.jpg");
+  background-repeat: no-repeat;
+  background-position: "center center";
+  background-size:cover;
+  background-attachment: fixed;
+}
+.bgimage h5 {
+  color:white;
+  text-shadow:2px 2px #333;
+}
+
+.container-fluid {
+  text-align: center;
+  font-size: 3em;
+  color: white;
+  position:absolute;
+  top: 30%
+}
+
+body {
+  overflow: scroll;
+}
