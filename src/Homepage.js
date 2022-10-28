@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import UserContext from "./userContext";
 
 function Homepage() {
+  const { currUser } = useContext(UserContext);
   return (
-    <div>image time capsule, where you can forget memories for a while.</div>
+    <div>
+      {currUser ? (
+        <div>Welcome Back {currUser.username}!</div>
+      ) : (
+        <div>
+          image time capsule, where you can forget memories for a while.
+        </div>
+      )}
+    </div>
   );
 }
 

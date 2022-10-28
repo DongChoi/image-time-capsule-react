@@ -28,6 +28,7 @@ function Login({ login }) {
       setFormData(initialFormData);
       navigate("/");
     } catch (error) {
+      console.log(error);
       setErrorMsg(error);
     }
   }
@@ -64,9 +65,6 @@ function Login({ login }) {
           Log in
         </button>
       </form>
-      {errorMsg.map((err) => (
-        <p>{err}</p>
-      ))}
     </div>
   );
 }

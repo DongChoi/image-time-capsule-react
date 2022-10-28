@@ -8,10 +8,8 @@ function Register({ register }) {
   const navigate = useNavigate();
   let initialFormData = {
     username: "",
-    password: "",
-    firstName: "",
-    lastName: "",
     email: "",
+    password: "",
   };
   const [formData, setFormData] = useState(initialFormData);
   const [errorMsg, setErrorMsg] = useState([]);

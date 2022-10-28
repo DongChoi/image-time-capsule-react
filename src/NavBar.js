@@ -13,13 +13,11 @@ function NavBar({ logOutUser }) {
     return (
       <nav className="NavBar d-flex justify-content-between">
         <div style={{ width: "1px" }}>
-          <NavLink to="/">Image Time Capsule</NavLink>
+          <NavLink to="/">Home</NavLink>
         </div>
         <div>
           <NavLink to="/login">Login </NavLink>
           <NavLink to="/signup">Sign Up</NavLink>
-          <NavLink to="/upload">Upload</NavLink>
-          <NavLink to="/Progress">Progress</NavLink>
         </div>
       </nav>
     );
@@ -27,15 +25,12 @@ function NavBar({ logOutUser }) {
     return (
       <nav className="NavBar d-flex justify-content-between">
         <div style={{ width: "1px" }}>
-          <NavLink to="/">Jobly</NavLink>
+          <NavLink to="/">Home</NavLink>
         </div>
         <div>
-          <NavLink to="/companies">Companies</NavLink>
-          <NavLink to="/jobs">Jobs</NavLink>
-          <NavLink to="/profile">Profile</NavLink>
+          <NavLink to="/capsules">Capsules</NavLink>
           <NavLink to="/" onClick={logOutUser}>
-            {" "}
-            Log Out {currUser.username}
+            Log Out
           </NavLink>
         </div>
       </nav>

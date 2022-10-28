@@ -1,38 +1,40 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./NavBar";
 import Routelist from "./Routelist";
 import "./App.css";
-// import JoblyApi from "./api";
-// import jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode";
 import UserContext from "./userContext";
 import ImageTimeCapsuleApi from "./ImageTimeCapsuleApi";
 import axios from "axios";
 
 function App() {
   const [currUser, setcurrUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(
+    localStorage.getItem("image-time-capsule-token")
+  );
   const [isLoading, setIsLoading] = useState(true);
-  // useEffect(
-  //   function fetchUserWhenMounted() {
-  //     async function addToLocal() {
-  //       if (token) {
-  //         localStorage.setItem("token", token);
-  //         let user = await getCurrUserFromToken(token);
-  //         console.log("curr usser state:", user);
-  //         setcurrUser(user);
-  //       } else {
-  //         localStorage.removeItem("token");
-  //       }
-  //       setIsLoading(false);
-  //     }
-  //     addToLocal();
-  //   },
-  //   [token]
-  // );
 
+  useEffect(
+    function fetchUserWhenMounted() {
+      async function addToLocal() {
+        if (token) {
+          localStorage.setItem("image-time-capsule-token", token);
+          let user = jwt_decode(token);
+          ImageTimeCapsuleApi.token = token;
+          setcurrUser(user);
+        } else {
+          localStorage.removeItem("token");
+        }
+        setIsLoading(false);
+      }
+      addToLocal();
+    },
+    [token]
+  );
+
+  //uploads files to the backend
   async function upload(files) {
     const formData = new FormData();
     for (let i = 0; i < files.length; i++) {
@@ -48,14 +50,13 @@ function App() {
       data: formData,
     };
     const resp = await axios.request(images);
-    console.log(resp);
+    console.log("This is after the upload we get this response", resp);
   }
 
   //calls api to register user to backend
   async function register(formData) {
     console.log("attempting to signup user");
     const resp = await ImageTimeCapsuleApi.register(formData);
-    console.log("user data", resp);
     setToken(resp);
   }
 
@@ -65,37 +66,30 @@ function App() {
     setToken(resp);
   }
 
-  //calls api to update user to backend
-  async function updateUser(formData, username) {
-    const resp = await ImageTimeCapsuleApi.updateUser(formData, username);
-    setcurrUser(resp);
-    console.log("CURRENT USER AFTER UPDATE", currUser);
+  async function createCapsule(username, formData) {
+    console.log("attempting to create capsule from app");
+    const resp = await ImageTimeCapsuleApi.createCapsule({
+      ...formData,
+      username,
+    });
+    setToken(resp);
   }
 
-  //calls api to get current user from token from backend
-  // async function getCurrUserFromToken(token) {
-  //   let user = jwt_decode(token);
-  //   ImageTimeCapsuleApi.token = token;
-  //   console.log("user", user);
-  //   const currUser = await ImageTimeCapsuleApi.getCurrUser(user.username);
-  //   if (!currUser.applications) {
-  //     currUser.applications = [];
-  //   }
-  //   return currUser;
+  // //calls api to update user to backend
+  // async function updateUser(formData, username) {
+  //   const resp = await ImageTimeCapsuleApi.updateUser(formData, username);
+  //   setcurrUser(resp);
+  //   console.log("CURRENT USER AFTER UPDATE", currUser);
   // }
 
-  // if (isLoading) {
-  //   return (
-  //     <div
-  //       className="spinner-border"
-  //       style={{ width: "3em", height: "3em" }}
-  //     ></div>
-  //   );
-  // }
+  if (isLoading) {
+    return <div style={{ width: "3em", height: "3em" }}>Loading</div>;
+  }
 
   //logs out user
   function logOutUser() {
     setToken(null);
+    localStorage.removeItem("image-time-capsule-token");
     setcurrUser(null);
   }
 
@@ -109,8 +103,9 @@ function App() {
               // applyJobs={applyJobs}
               login={login}
               register={register}
-              updateUser={updateUser}
+              // updateUser={updateUser}
               upload={upload}
+              createCapsule={createCapsule}
             />
           </div>
         </BrowserRouter>

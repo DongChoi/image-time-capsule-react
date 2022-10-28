@@ -37,39 +37,35 @@ class ImageTimeCapsuleApi {
 
   // Individual API routes
 
-  /** Get all the jobs */
-  static async UploadImages(title) {
-    let res = await this.request("jobs", { title });
-    return res.jobs;
-  }
-
   static async register(formData) {
     console.log("ImageTimeCapsuleAPI attempting to send new user data");
     let res = await this.request("signup", formData, "post");
     console.log("ImageTimeCapsuleAPI register successful", res);
-    return res.token;
-  }
-
-  static async getCurrUser(username) {
-    let res = await this.request(`users/${username}`);
-    return res.user;
-  }
-
-  static async login(username) {
-    let res = await this.request("auth/token", username, "post");
-    return res.token;
-  }
-
-  static async updateUser(formData, username) {
-    let res = await this.request(`users/${username}`, formData, "patch");
-    return res.user;
-  }
-
-  //Returns {"applied": jobId}
-  static async applyToJob(username, jobId) {
-    let res = await this.request(`users/${username}/jobs/${jobId}`, {}, "post");
     return res;
   }
+
+  static async login(formData) {
+    let res = await this.request("login", formData, "post");
+    return res.token;
+  }
+
+  /** Create new capsule */
+  static async createCapsule(formData) {
+    console.log("attempting to create capsule");
+    let res = await this.request("capsules", formData, "post");
+    return res.jobs;
+  }
+
+  // static async updateUser(formData, username) {
+  //   let res = await this.request(`users/${username}`, formData, "patch");
+  //   return res.user;
+  // }
+
+  //   //update capsule
+  //   static async applyToJob(username, jobId) {
+  //     let res = await this.request(`users/${username}/jobs/${jobId}`, {}, "post");
+  //     return res;
+  //   }
 }
 
 export default ImageTimeCapsuleApi;

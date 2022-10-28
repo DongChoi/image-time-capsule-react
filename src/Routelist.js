@@ -6,8 +6,9 @@ import { useContext } from "react";
 import UploadImages from "./UploadImages";
 import Register from "./Register";
 import Login from "./Login";
+import Capsules from "./Capsules";
 
-function RouteList({ upload, login, register }) {
+function RouteList({ upload, login, register, createCapsule }) {
   const { currUser } = useContext(UserContext);
 
   if (currUser) {
@@ -15,7 +16,10 @@ function RouteList({ upload, login, register }) {
       <>
         <Routes>
           <Route path="/" element={<Homepage />} />
-
+          <Route
+            path="/capsules"
+            element={<Capsules createCapsule={createCapsule} />}
+          />
           <Route path="/upload" element={<UploadImages upload={upload} />} />
           {/* 
           <Route
@@ -39,7 +43,6 @@ function RouteList({ upload, login, register }) {
         <Route path="/upload" element={<UploadImages />} />
         <Route path="/signup" element={<Register register={register} />} />
         <Route path="/login" element={<Login login={login} />} />
-
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     );
