@@ -7,6 +7,7 @@ import UploadImages from "./UploadImages";
 import Register from "./Register";
 import Login from "./Login";
 import Capsules from "./Capsules";
+import CreateCapsuleForm from "./CreateCapsuleForm";
 
 function RouteList({ upload, login, register, createCapsule }) {
   const { currUser } = useContext(UserContext);
@@ -16,18 +17,15 @@ function RouteList({ upload, login, register, createCapsule }) {
       <>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route
-            path="/capsules"
-            element={<Capsules createCapsule={createCapsule} />}
-          />
+          <Route path="/capsules" element={<Capsules />} />
           <Route path="/upload" element={<UploadImages upload={upload} />} />
-          {/* 
-          <Route
-            path="/timecapsules"
-            element={<Jobs applyJobs={applyJobs} />}
-          />
 
           <Route
+            path="/create-capsule"
+            element={<CreateCapsuleForm createCapsule={createCapsule} />}
+          />
+
+          {/* <Route
             path="/profile"
             element={<ProfileForm updateUser={updateUser} />}
           /> */}
