@@ -13,11 +13,13 @@ function Capsules() {
   const currentDate = today.getDate();
   const currentYear = today.getFullYear();
 
-  //86400000 milliseconds = 1 Day
+  //if it takes over 2 hours or so then use a library. or uses that are universal or are used by a big number of people
   function getDaysRemaining(psqlDate) {
     const returnDateInMilliseconds = new Date(psqlDate).getTime();
+    const milisecondsInADay = 86400000;
     const millisecondsRemaining = returnDateInMilliseconds - today.getTime();
-    const daysRemaining = Math.ceil(millisecondsRemaining / 86400000) + 1;
+    const daysRemaining =
+      Math.ceil(millisecondsRemaining / milisecondsInADay) + 1;
     return daysRemaining;
   }
 
@@ -41,6 +43,7 @@ function Capsules() {
               capsuleName={capsule.name}
               openDate={capsule.return_date}
               message={capsule.message}
+              closed={capsule.closed}
               daysRemaining={getDaysRemaining(capsule.return_date)}
             />
           );

@@ -4,7 +4,6 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function UploadImages({ upload }) {
   const [images, setImages] = useState([]);
-  const [startDate, setStartDate] = useState(new Date());
   const handleChange = (e) => {
     //   console.log(e.target.files[0].file); //doing this before
     //   the setter would have been better placement
@@ -32,12 +31,6 @@ function UploadImages({ upload }) {
         />
         <button className="btn btn-primary btn-lg">Upload</button>
       </form>
-      <p>Pick a date!</p>
-      <b>Research recommends you to pick a date three months from now</b>
-      <DatePicker
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-      />
       <div>
         <h1>Here are all of the images you've uploaded!</h1>;
         {images.map((image) => (
