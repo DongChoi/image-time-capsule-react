@@ -1,3 +1,4 @@
+import "./HomePage.css";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "./userContext";
@@ -5,7 +6,7 @@ import UserContext from "./userContext";
 function Homepage() {
   const { currUser } = useContext(UserContext);
   return (
-    <div>
+    <div className="welcome-msg">
       {currUser ? (
         <div>Welcome Back {currUser.username}!</div>
       ) : (

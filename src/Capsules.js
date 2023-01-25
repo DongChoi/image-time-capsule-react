@@ -26,14 +26,6 @@ function Capsules() {
   console.log(capsules);
   return (
     <div>
-      <p>Today's Date</p>
-      <p>
-        {currentMonth + 1}, {currentDate}, {currentYear}
-      </p>
-      <Link className="btn btn-primary" to="/create-capsule">
-        Create a new capsule
-      </Link>
-
       {capsules.length === 0 ? (
         <div className="msg"> "You have no capsules yet!"</div>
       ) : (

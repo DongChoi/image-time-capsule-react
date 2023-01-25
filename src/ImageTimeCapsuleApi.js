@@ -51,9 +51,10 @@ class ImageTimeCapsuleApi {
 
   /** Create new capsule */
   static async createCapsule(formData) {
-    console.log("attempting to create capsule");
-    let res = await this.request("capsules", formData, "post");
-    return res.jobs;
+    console.log("formData from API", formData);
+    let resp = await this.request("capsules", formData, "post");
+    console.log(resp);
+    return resp;
   }
 
   // static async updateUser(formData, username) {

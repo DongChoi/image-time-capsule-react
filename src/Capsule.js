@@ -1,8 +1,9 @@
 import React from "react";
 
-function Capsule({ capsuleName, openDate, message, daysRemaining, closed }) {
+function Capsule({ capsuleName, openDate, message, daysRemaining }) {
   console.log("openDate", openDate);
   console.log("Capsule daysremaining", daysRemaining);
+  console.log("capsuleName", capsuleName);
 
   return (
     <div>

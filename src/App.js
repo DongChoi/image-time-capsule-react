@@ -34,30 +34,12 @@ function App() {
     [token]
   );
 
-  //uploads files to the backend
-  async function upload(files) {
-    const formData = new FormData();
-    for (let i = 0; i < files.length; i++) {
-      formData.append("file", files[i]);
-    }
-    const images = {
-      method: "POST",
-      url: "http://localhost:5001/images/add",
-      headers: {
-        //issue
-        "Content-Type": "multipart/form-data",
-      },
-      data: formData,
-    };
-    const resp = await axios.request(images);
-    console.log("This is after the upload we get this response", resp);
-  }
-
   //calls api to register user to backend
   async function register(formData) {
     console.log("attempting to signup user");
     const resp = await ImageTimeCapsuleApi.register(formData);
-    setToken(resp);
+    console.log("resp after sighn up", resp);
+    setToken(resp.token);
   }
 
   //calls api to login user to backend
@@ -66,13 +48,32 @@ function App() {
     setToken(resp);
   }
 
-  async function createCapsule(username, formData) {
-    console.log("attempting to create capsule from app");
+  async function createCapsule(formData, images) {
     const resp = await ImageTimeCapsuleApi.createCapsule({
       ...formData,
-      username,
+      username: currUser.username,
     });
-    setToken(resp);
+    const imagesResp = await addImagesToCapsule(images, resp.capsule_id);
+    setToken(resp.token);
+  }
+
+  //uploads files to the backend
+  async function addImagesToCapsule(file, capsule_id) {
+    const formData = new FormData();
+    for (let i = 0; i < file.length; i++) {
+      formData.append("file", file[i]);
+    }
+    const images = {
+      method: "POST",
+      url: `http://localhost:5001/capsules/${capsule_id}/images`,
+      headers: {
+        //issue
+        "Content-Type": "multipart/form-data",
+      },
+      data: formData,
+    };
+    const resp = await axios.request(images);
+    console.log("resp after add images", resp);
   }
 
   // //calls api to update user to backend
@@ -104,7 +105,6 @@ function App() {
               login={login}
               register={register}
               // updateUser={updateUser}
-              upload={upload}
               createCapsule={createCapsule}
             />
           </div>
