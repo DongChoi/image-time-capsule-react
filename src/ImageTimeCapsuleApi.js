@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_URL =
   process.env.REACT_APP_BASE_URL ||
-  "http://image-time-capsule.us-west-1.elasticbeanstalk.com/";
+  "https://image-time-capsule.us-west-1.elasticbeanstalk.com/";
 console.log("process.env= ", process.env.REACT_APP_BASE_URL);
 /** API Class.
  *
