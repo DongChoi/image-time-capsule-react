@@ -1,7 +1,9 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5001";
-
+const BASE_URL =
+  process.env.REACT_APP_BASE_URL ||
+  "http://image-time-capsule.us-west-1.elasticbeanstalk.com/";
+console.log("process.env= ", process.env.REACT_APP_BASE_URL);
 /** API Class.
  *
  * Static class tying together methods used to get/send to to the API.
