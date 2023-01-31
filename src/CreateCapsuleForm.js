@@ -104,7 +104,7 @@ function CreateCapsuleForm({ createCapsule }) {
           Create Capsule
         </button>
         <div>
-          <h1>Here are all of the images you've uploaded!</h1>;
+          <h1>Here are the images you are about to upload:</h1>;
           {/* TODO: make a remove from state function with an x button or something */}
           {images.map((image, imageIndex) => (
             <div className="images-preview" key={imageIndex}>
