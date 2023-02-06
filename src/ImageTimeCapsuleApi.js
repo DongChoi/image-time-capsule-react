@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const BASE_URL =
-  process.env.REACT_APP_BASE_URL ||
-  "http://image-time-capsule.us-west-1.elasticbeanstalk.com";
+  process.env.REACT_APP_BASE_URL || "https://itcbe.andrewchoi.dev";
 console.log("process.env= ", process.env.REACT_APP_BASE_URL);
 console.log("BASE_URL ", BASE_URL);
 /** API Class.
@@ -49,6 +48,7 @@ class ImageTimeCapsuleApi {
 
   static async login(formData) {
     let res = await this.request("login", formData, "post");
+    console.log("RES", res);
     return res.token;
   }
 
