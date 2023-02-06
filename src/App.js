@@ -65,7 +65,7 @@ function App() {
     }
     const images = {
       method: "POST",
-      url: `https://itcbe.andrewchoi.dev//capsules/${capsule_id}/images`,
+      url: `https://itcbe.andrewchoi.dev/capsules/${capsule_id}/images`,
       headers: {
         //issue
         "Content-Type": "multipart/form-data",
