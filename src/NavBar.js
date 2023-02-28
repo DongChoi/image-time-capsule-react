@@ -15,8 +15,6 @@ function NavBar({ logOutUser }) {
       <nav className="nav">
         <div>
           <NavLink to="/">Home</NavLink>
-        </div>
-        <div>
           <NavLink to="/login">Login </NavLink>
           <NavLink to="/signup">Sign Up</NavLink>
         </div>
