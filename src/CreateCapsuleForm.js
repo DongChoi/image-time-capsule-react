@@ -60,6 +60,7 @@ function CreateCapsuleForm({ createCapsule }) {
         onSubmit={handleSubmit}
       >
         <div>
+          <h4>This application for now only takes JPG/JPEG/PNG FILES ONLY!</h4>
           <label htmlFor="capsule-name">Capsule Name: </label>
           <input
             id="new-capsule-name"
