@@ -3,7 +3,7 @@ import UserContext from "./userContext";
 import Capsule from "./Capsule";
 import CreateCapsuleForm from "./CreateCapsuleForm";
 import { Link } from "react-router-dom";
-
+import "./style/Capsules.scss";
 function Capsules() {
   const { currUser } = useContext(UserContext);
   const [capsules, setCapsules] = useState(currUser.capsules);
@@ -25,7 +25,7 @@ function Capsules() {
 
   console.log(capsules);
   return (
-    <div>
+    <div className="capsules">
       {capsules.length === 0 ? (
         <div className="msg"> "You have no capsules yet!"</div>
       ) : (

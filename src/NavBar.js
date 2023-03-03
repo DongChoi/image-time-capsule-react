@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "./userContext";
-import "./NavBar.css";
+import "./style/NavBar.scss";
 // import "./NavBar.css";
 
 /** shows the routes based on if the current user exists

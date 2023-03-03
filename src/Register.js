@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Register.css";
+import "./style/Register.scss";
 
 /**
  */
@@ -56,17 +56,12 @@ function Register({ register }) {
   }
 
   return (
-    <div className="registerContainer">
+    <div className="register-card">
       <h2>Sign Up</h2>
-      <form
-        className="RegisterForm card align-self-center"
-        onSubmit={handleSubmit}
-      >
+      <form className="sign-up-form" onSubmit={handleSubmit}>
         {renderForm()}
 
-        <button className="btn-primary rig btn btn-lrg registerForm-Btn">
-          Signup
-        </button>
+        <button className="btn-primary login-signup-Form-Btn">Continue</button>
       </form>
       {/* {errorMsg.map((err) => (
         <p>{err}</p>

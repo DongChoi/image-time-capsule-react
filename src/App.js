@@ -94,7 +94,7 @@ function App() {
   }
 
   return (
-    <body className="html">
+    <div>
       <UserContext.Provider value={{ currUser }}>
         <BrowserRouter>
           <NavBar logOutUser={logOutUser} />
@@ -109,7 +109,7 @@ function App() {
           </div>
         </BrowserRouter>
       </UserContext.Provider>
-    </body>
+    </div>
   );
 }
 

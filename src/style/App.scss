@@ -1,6 +1,5 @@
 
 
-
 // .App {
 //   text-align: center;
 // }
@@ -40,19 +39,22 @@
 //   }
 // }
 
-// body {
-//   width:100%;
-//   height:100vh;
-//   background-image: url("https://blog.nasm.org/hubfs/Imported_Blog_Media/Learning-to-accept-and-let-go.jpg");
-//   background-repeat: no-repeat;
-//   background-position: "center center";
-//   background-size:cover;
-//   background-attachment: fixed;
-// }
-// .bgimage h5 {
-//   color:white;
-//   text-shadow:2px 2px #333;
-// }
+body {
+  width:100%;
+  height:100vh;
+  background-image: url("../../public/background-photo.jpeg");
+  background-repeat: no-repeat;
+  background-position: "center center";
+  background-size:cover;
+  background-attachment: fixed;
+  background-color: rgb(17, 11, 24);
+//   overflow-x: hidden;
+}
+
+.bgimage h5 {
+  color:white;
+  text-shadow:2px 2px #333;
+}
 
 // .container-fluid {
 //   text-align: center;

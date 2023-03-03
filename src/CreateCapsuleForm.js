@@ -1,4 +1,4 @@
-import "./CreateCapsuleForm.css";
+import "./style/CreateCapsuleForm.scss";
 import React, { useContext, useState } from "react";
 import UserContext from "./userContext";
 import DatePicker from "react-datepicker";
@@ -53,20 +53,23 @@ function CreateCapsuleForm({ createCapsule }) {
   }
 
   return (
-    <div className="card">
+    <div className="capsule-card">
       <form
         id="capsuleForm"
         encType="multipart/form-data"
         onSubmit={handleSubmit}
       >
         <div>
-          <h4>This application for now only takes JPG/JPEG/PNG FILES ONLY!</h4>
+          <h4>
+            To save costs on aws, this application for now only takes
+            JPG/JPEG/PNG FILES ONLY!
+          </h4>
           <label htmlFor="capsule-name">Capsule Name: </label>
           <input
             id="new-capsule-name"
             name="name"
             type="text"
-            className="form-control"
+            className="capsule-form-control"
             placeholder="Name your Capsule!"
             onChange={handleChange}
             value={formData["name"]}
@@ -79,7 +82,7 @@ function CreateCapsuleForm({ createCapsule }) {
             id="new-capsule-message"
             name="message"
             type="text"
-            className="form-control"
+            className="capsule-form-control"
             placeholder="Leave a message!"
             onChange={handleChange}
             value={formData["message"]}
@@ -88,7 +91,12 @@ function CreateCapsuleForm({ createCapsule }) {
         </div>
         <div>
           <label htmlFor="capsule-return-date">Return Date: </label>
-          <DatePicker selected={date} onChange={(date) => setStartDate(date)} />
+          <DatePicker
+            selected={date}
+            onChange={(date) => setStartDate(date)}
+            minDate={new Date()}
+            showDisabledMonthNavigation
+          />
         </div>
         <div>
           <label htmlFor="capsule-images">Image Files: </label>
@@ -105,7 +113,7 @@ function CreateCapsuleForm({ createCapsule }) {
           Create Capsule
         </button>
         <div>
-          <h1>Here are the images you are about to upload:</h1>;
+          <h1>Here are the images you are about to upload:</h1>
           {/* TODO: make a remove from state function with an x button or something */}
           {images.map((image, imageIndex) => (
             <div className="images-preview" key={imageIndex}>

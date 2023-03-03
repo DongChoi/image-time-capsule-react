@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import "./style/Login.scss";
 
 /** Prop: login function
  *  State: form data, and error messages
@@ -53,17 +53,12 @@ function Login({ login }) {
     });
   }
   return (
-    <div className="loginContainer">
-      <h2>Login</h2>
-      <form
-        className="loginForm card align-self-center"
-        onSubmit={handleSubmit}
-      >
+    <div className="card">
+      <h2>Welcome</h2>
+      <form className="loginForm" onSubmit={handleSubmit}>
         {renderForm()}
 
-        <button className="btn-primary rig btn btn-lrg loginForm-Btn">
-          Log in
-        </button>
+        <button className="btn-primary login-signup-Form-Btn">Log in</button>
       </form>
     </div>
   );
