@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import Homepage from "./Homepage";
 // import Companies from "./Companies";

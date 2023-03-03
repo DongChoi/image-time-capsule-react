@@ -1,9 +1,8 @@
-import "./App.css";
+import "./style/App.scss";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./NavBar";
 import Routelist from "./Routelist";
-import "./App.css";
 import jwt_decode from "jwt-decode";
 import UserContext from "./userContext";
 import ImageTimeCapsuleApi from "./ImageTimeCapsuleApi";
@@ -95,7 +94,7 @@ function App() {
   }
 
   return (
-    <div>
+    <body className="html">
       <UserContext.Provider value={{ currUser }}>
         <BrowserRouter>
           <NavBar logOutUser={logOutUser} />
@@ -110,7 +109,7 @@ function App() {
           </div>
         </BrowserRouter>
       </UserContext.Provider>
-    </div>
+    </body>
   );
 }
 
