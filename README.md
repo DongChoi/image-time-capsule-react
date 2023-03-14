@@ -1,5 +1,8 @@
 # Image Time Capsule
 
+![demo](public/pic03.png)
+
+
 ### Description 
 
 Image Time Capsule is a web application that allows users to upload and store images, creating a digital time capsule of their memories. This README file contains information about the front-end development of the application.
