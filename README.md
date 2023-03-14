@@ -20,7 +20,7 @@ Image Time Capsule is a web application that allows users to upload and store im
 ### Server Cost Optimization
 To reduce server costs, we compared costs and migrated from Heroku to AWS cloud services. As a result, server costs were reduced by 90%.
 
-# Installation
+### Installation
 To run the application locally, follow these steps:
 
 1. Clone the repository.
