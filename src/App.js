@@ -14,7 +14,10 @@ function App() {
     localStorage.getItem("image-time-capsule-token")
   );
   const [isLoading, setIsLoading] = useState(true);
-
+  
+  //Dear reader, for the purpose of learning something new, I used local storage instead of cookies. I have done the research
+  //of pros and cons for the purpose of security. After the findings, I thought it would be useful to practice using local storage as well
+  // https://www.geeksforgeeks.org/difference-between-local-storage-session-storage-and-cookies/
   useEffect(
     function fetchUserWhenMounted() {
       async function addToLocal() {
